@@ -9,8 +9,8 @@ class MyDbHandler(context : Context) :  SQLiteOpenHelper(context, DATABSE_NAME,n
 //params
     companion object {
         public const val DATABASE_VERSION = 1
-        public const val DATABSE_NAME = "contacts_db"
-        public const val TABLE_NAME = "contacts"
+        public const val DATABSE_NAME = "EmployeeDatabase"
+        public const val TABLE_NAME = "EmployeeTable"
 
         public const val KEY_ID = "_id"
         public const val KEY_NAME = "name"
@@ -27,7 +27,7 @@ class MyDbHandler(context : Context) :  SQLiteOpenHelper(context, DATABSE_NAME,n
         db?.execSQL(CREATE_CONTACT_TABLE)
     }
 
-    override fun onUpgrade(db: SQLiteDatabase?, p1: Int, p2: Int) {
-        TODO("Not yet implemented")
+    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
+        db!!.execSQL("DROP TABLE IF EXIST" + TABLE_NAME)
     }
 }
